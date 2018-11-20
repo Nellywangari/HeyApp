@@ -1,0 +1,79 @@
+<ion-header>
+
+        <ion-navbar color="primary">
+            <button ion-button menuToggle>
+                <ion-icon name="menu"></ion-icon>
+            </button>
+            <ion-title>{{ selectedProduct.name }}</ion-title>
+        </ion-navbar>
+    
+    </ion-header>
+
+<ion-content padding>
+    <ion-card>
+        <ion-card-header>
+            {{selectedProduct.name}}
+        </ion-card-header>
+        <div class="img">
+            <img src="{{ selectedProduct.imgUrl }}">
+        </div>
+
+        <ion-card-content>
+            <div class="description">
+                <p>{{ selectedProduct.description }}</p>
+
+            </div>
+
+            <div class="separate">
+                <ion-row class="product_details">
+                    <ion-col>
+                           <p class="quantity">Total Kshs<span> {{ totalPicked}} </span></p>
+                    </ion-col>
+
+                  
+                    <ion-col class="price">
+                        <p class="price">Price: <span>kshs {{ selectedProduct.price }}</span></p>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                           <ion-col>
+                               <ion-item>
+                                <button ion-button icon-only item-start (click)="addItem()"><ion-icon name="add"></ion-icon></button>
+                               <h4>Quantity {{ pickedItems }} </h4>
+                               <button ion-button icon-only item-end (click)="removeItem()"><ion-icon name="remove"></ion-icon></button>
+
+                               </ion-item>
+                              
+                            </ion-col>
+                            <ion-col>
+                                <p class="quantity">In Stock : {{ selectedProduct.units }}</p>
+                            </ion-col>
+                </ion-row>
+            </div>
+
+            <ion-row>
+                <ion-col>
+                    <button ion-button full (click)="goToChat(selectedProduct.user_id)">enquire</button>
+                </ion-col>
+                <ion-col>
+                    <button ion-button full (click)="orderProduct()">Add To Cart</button>
+                </ion-col>
+            </ion-row>
+
+            <div class="separate">
+                <p>Located At: {{ selectedProduct.location }}</p>
+
+                <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+                    <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+                </agm-map>
+
+            </div>
+
+            <ion-row>
+                <ion-col>
+                    <button ion-button full color="secondary" (click)="productsPage()">Continue Shopping</button>
+                </ion-col>
+            </ion-row>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

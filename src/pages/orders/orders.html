@@ -1,0 +1,81 @@
+<!--
+  Generated template for the OrdersPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+                    <ion-icon name="menu"></ion-icon>
+                </button>
+        <ion-title>Orders</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <!-- myorder  -->
+    <ion-list>
+        <ion-list-header>
+            Items on Cart  <ion-icon name="cart"></ion-icon> 
+        </ion-list-header>
+        <ion-item>
+            <h4>Your Wallet Balance is <b>{{ walletBalance }}</b> <i>ksh</i></h4>
+        </ion-item>
+        <ion-item-sliding *ngFor="let item of products">
+            <ion-item>
+                <ion-thumbnail item-start>
+                    <img src="{{ item.imgUrl }}">
+                </ion-thumbnail>
+                <h2> {{ item.name }}</h2>
+                <p> {{ item.price }}</p>
+            </ion-item>
+
+            <ion-item-options side="right">
+
+                <button ion-button color="danger" (click)="cancelOrder(item.orderid)">
+            <ion-icon name="ios-close-outline"></ion-icon>
+            Cancel
+          </button>
+            </ion-item-options>
+        </ion-item-sliding>
+        <ion-item>Total Amount <b> {{totalOrderAmount}}</b> <i>kshs</i></ion-item>
+
+        <ion-item><button ion-button  color="danger" outline (click)="checkout()" block> Checkout</button></ion-item>
+       
+    </ion-list>
+
+    <!-- <ion-list>
+        <ion-list-header>
+            Orders Made To You
+        </ion-list-header>
+        <ion-item-sliding *ngFor="let item of businessOrders$ | async">
+            <ion-item>
+                <ion-thumbnail item-start>
+                    <img src="item.imgUrl">
+                </ion-thumbnail>
+                <h2>{{item.product_name}}</h2>
+                <p></p>
+            </ion-item>
+            <ion-item-options side="right">
+            <button ion-button color="secondary" (click)="acceptOrder(item)">
+              <ion-icon name="ios-checkmark-outline"></ion-icon>
+              Accept
+            </button>
+                <button ion-button color="primary">
+              <ion-icon name="close"></ion-icon>
+              Reject
+            </button>
+                <button ion-button color="danger">
+              <ion-icon name="chatbubbles"></ion-icon>
+              Negotiate
+            </button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list> -->
+
+</ion-content>

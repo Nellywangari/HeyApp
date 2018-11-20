@@ -1,0 +1,75 @@
+<ion-header>
+
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Featured Products</ion-title>
+       
+            
+     
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+        <ion-searchbar
+        [(ngModel)]="searchQuery"
+        denounce="750"
+        (change)="search($event)" placeholder="search"></ion-searchbar>
+
+
+    <div class="pins" *ngIf="products$ != null">
+
+
+        <ion-card class="pin" *ngFor="let product of products$ | async">
+            <img [src]="product.imgUrl" />
+            <div *ngIf="product.brief_description" class="post-description">
+                <small>{{ product.brief_description }}</small>
+            </div>
+            <ion-item>
+                <p>{{ product.name }}</p>
+                <p><small><ion-icon name="compass" color="secondary"></ion-icon>Location  {{ product.location }}</small></p>
+                <p><small><ion-icon name="pricetag" color="danger"></ion-icon>Price Kshs {{ product.price }}</small></p>
+                <p><small><ion-icon name="flask" color="dark"></ion-icon>units available {{ product.units }}</small></p>
+            </ion-item>
+            <ion-item>
+                <button ion-button block (click)="orderPage(product)">See More</button>
+            </ion-item>
+        </ion-card>
+    </div>
+
+<!-- 
+    <div class="pins" *ngIf="products != null">
+
+
+            <ion-card class="pin" *ngFor="let product of products$ | async">
+                <img [src]="product.imgUrl" />
+                <div *ngIf="product.brief_description" class="post-description">
+                    <small>{{ product.brief_description }}</small>
+                </div>
+                <ion-item>
+                    <p>{{ product.name }}</p>
+                    <p><small><ion-icon name="compass" color="secondary"></ion-icon>Location  {{ product.location }}</small></p>
+                    <p><small><ion-icon name="pricetag" color="danger"></ion-icon>Price Kshs {{ product.price }}</small></p>
+                    <p><small><ion-icon name="flask" color="dark"></ion-icon>units available {{ product.units }}</small></p>
+                </ion-item>
+                <ion-item>
+                    <button ion-button block (click)="orderPage(product)">See More</button>
+                </ion-item>
+            </ion-card>
+        </div> -->
+
+
+
+ 
+    <ion-fab right bottom>
+            <button ion-fab color="primary"><ion-icon name="add"></ion-icon></button>
+            <ion-fab-list side="top">
+
+                <button ion-fab color="secondary" (click)="addProductPage()"><ion-icon name="add"></ion-icon></button>
+                <button ion-fab color="primary" (click)="editProductPage()"><ion-icon name="ios-analytics-outline"></ion-icon></button>
+                
+            </ion-fab-list>
+   </ion-fab>
+</ion-content>

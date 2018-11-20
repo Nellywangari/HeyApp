@@ -1,0 +1,97 @@
+<ion-header>
+
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+    </ion-navbar>
+
+</ion-header>
+<ion-content>
+    <ion-card>
+        <!-- <div class="coverimg" (click)="chooseimg()">
+            <img src="{{ imgUrl }}">
+        </div> -->
+        <div class="coverimg">
+            <form>
+                <ion-item>
+                    <ion-input type="file" class="form-control" id="image" (change)="uploadimg($event)"></ion-input>
+                </ion-item>
+            </form>
+            <div class="loading">
+                <round-progress
+                [current]="progress.percentage"
+                [max]="100"
+                [color]="'#45ccce'"
+                [background]="'#eaeaea'"
+                [radius]="20"
+                [stroke]="5"
+                [semicircle]="false"
+                [rounded]="true"
+                [clockwise]="true"
+                [responsive]="false"
+                [duration]="800"
+                [animation]="'easeInOutQuart'"
+                [animationDelay]="0"
+                ></round-progress>
+            </div>
+        </div>
+        <ion-card-content>
+            <ion-card-title>
+                Product/Service Details
+            </ion-card-title>
+            <ion-list>
+
+                <ion-item>
+                    <ion-label stacked>Product title</ion-label>
+                    <ion-input type="text" [(ngModel)]="product.name"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label stacked>Brief Description</ion-label>
+                    <ion-input type="text" [(ngModel)]="product.brief_description"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label stacked>Description</ion-label>
+                    <ion-input type="text" [(ngModel)]="product.description"></ion-input>
+                </ion-item>
+
+                <ion-item>
+
+                    <button ion-button block (click)="getLocation()">Set Location</button>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label stacked>Units Available</ion-label>
+                    <ion-input type="number" [(ngModel)]="product.units"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label stacked>Measurement unit</ion-label>
+                    <ion-input type="text" [(ngModel)]="product.measurement"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label stacked>Price per unit</ion-label>
+                    <ion-input type="number" [(ngModel)]="product.price"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label stacked>Category</ion-label>
+
+                    <ion-select multiple="false" cancelText="Cancel" okText="Okay" [(ngModel)]="product.category_id">
+
+                        <ion-option *ngFor="let category of categories | async" value="{{ category?.id }}">{{ category.title }}</ion-option>
+
+                    </ion-select>
+                </ion-item>
+
+                <ion-buttons end>
+                    <button ion-button (click)="upload()">send <ion-icon  name="send"></ion-icon></button>
+                </ion-buttons>
+
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>

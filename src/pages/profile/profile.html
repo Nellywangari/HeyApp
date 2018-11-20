@@ -1,0 +1,86 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+                    <ion-icon name="menu"></ion-icon>
+                  </button>
+        <ion-title>profile</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+
+<ion-content parallax-header no-bounce class="bg-modal">
+    <div class="header-image"></div>
+    <div class="main-content" text-wrap text-center>
+        <div class="circular" style="overflow: hidden">
+              
+
+            <img src="{{user.profileImage}}" alt="">
+            
+        </div>
+        <div>
+            <form action="" enctype="multipart/form-data">
+                <input type="file" (change)="changeImg($event)" id="changePic"/>
+            
+                <label for="changePic" icon-only ion-button>
+                            <ion-icon name="ios-camera-outline"></ion-icon>
+                 </label>
+                        
+            </form>
+              
+        </div>
+        <h2>{{user.name}}</h2>
+
+        <p class="profile-description">{{user.description}}</p>
+        <hr>
+        <p class="profile-description">{{user.status}}</p>
+        <hr>
+        <ion-list no-lines>
+            <ion-item>
+                <ion-icon name="mail" color="primary" item-start></ion-icon>
+                <p>Email</p>
+                {{user.email}}
+                <!-- <a button ion-button href="mailto:{{user.email}}" color="primary" item-end medium>Open App</a> -->
+            </ion-item>
+            <ion-item>
+                <ion-icon name="mail" color="primary" item-start></ion-icon>
+                <p>Occupation</p>
+                {{user.occupation}}
+            </ion-item>
+
+
+        </ion-list>
+        <h2>Wallet</h2>
+        <hr>
+        <ion-list no-lines>
+
+            <ion-item>
+                <ion-icon name="mail" color="primary" item-start></ion-icon>
+                <p>Balance</p>
+                kshs {{ walletBalance }}
+
+            </ion-item>
+            <ion-item>
+                <ion-icon name="mail" color="primary" item-start></ion-icon>
+                <p>Transactions</p>
+                see all transactions
+            </ion-item>
+
+        </ion-list>
+
+        <ion-list>
+            <ion-item>
+                <button ion-button block color="primary" (click)="logout()">Deactivate account</button>
+            </ion-item>
+        </ion-list>
+    </div>
+
+</ion-content>
